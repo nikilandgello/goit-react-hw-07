@@ -53,7 +53,7 @@ const Contact = ({
             <use href="/sprite.svg#icon-phone"></use>
           </svg>
           <p className={css.contactDescription}>
-            <a href={`tel:+38${formattedNumber}`} className={css.phoneLink}>
+            <a href={`tel:${formattedNumber}`} className={css.phoneLink}>
               +38-{number}
             </a>
           </p>

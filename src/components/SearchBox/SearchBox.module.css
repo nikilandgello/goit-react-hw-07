@@ -30,10 +30,3 @@
 .input::placeholder {
   color: var(--botdeaux);
 }
-
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 71px;
-}

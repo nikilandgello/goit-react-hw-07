@@ -9,13 +9,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const abortController = new AbortController();
-
-    dispatch(fetchContacts({ signal: abortController.signal }));
-
-    return () => {
-      abortController.abort();
-    };
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (

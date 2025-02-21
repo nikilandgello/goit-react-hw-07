@@ -26,6 +26,9 @@
 .loading {
   padding-top: 25px;
   padding-bottom: 25px;
-  margin: 0 auto;
-  text-align: center;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 121px;
 }
