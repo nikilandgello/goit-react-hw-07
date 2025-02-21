@@ -1,0 +1,26 @@
+.BtnMore {
+  background-color: transparent;
+  border: none;
+  color: var(----cardinal);
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 25px;
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.BtnMore:hover {
+  background-color: transparent;
+  border: none;
+}
+
+.buttonForm {
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.animatedContainer {
+  overflow: hidden;
+}
