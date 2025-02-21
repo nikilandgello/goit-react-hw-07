@@ -48,7 +48,6 @@ const slice = createSlice({
         handleFulfilled(state);
         state.items = state.items.filter(item => item.id !== action.payload);
         toast.success(`Contact deleted successfully.`);
-        console.log(action.payload);
       })
       .addCase(deleteContact.rejected, handleRejected)
 
