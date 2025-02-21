@@ -18,6 +18,8 @@ const Contact = ({
   const fullname = fullNameFunc(firstname, lastname);
   const maxLegth = 15;
 
+  const formattedNumber = number.replace(/-/g, '');
+
   const handleOpenModal = () => {
     dispatch(
       openModal({
@@ -50,7 +52,11 @@ const Contact = ({
           <svg className={css.icon} width={20} height={20}>
             <use href="/sprite.svg#icon-phone"></use>
           </svg>
-          <p className={css.contactDescription}>+38-{number}</p>
+          <p className={css.contactDescription}>
+            <a href={`tel:+38${formattedNumber}`} className={css.phoneLink}>
+              +38-{number}
+            </a>
+          </p>
         </div>
       </div>
       <div className={css.blockBtn}>

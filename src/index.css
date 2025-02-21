@@ -9,7 +9,8 @@ html {
 }
 
 body {
-  font-family: Apple Chancery, cursive;
+  font-family: 'Courier New', monospace;
+
   line-height: 1.5;
 
   margin: 0;
@@ -19,7 +20,7 @@ body {
 }
 
 :root {
-  --font-family: Apple Chancery, cursive;
+  --font-family: 'Courier New', monospace;
   --mavka: #200b31;
   --lulu: #3d0d35;
   --purple-night: #541033;
@@ -76,7 +77,7 @@ a {
 
 button {
   cursor: pointer;
-  font-family: Apple Chancery, cursive;
+  font-family: var(--font-family);
   color: var(--mavka);
   border: 1px solid var(--light-burgundy);
   background-color: var(--botdeaux);
