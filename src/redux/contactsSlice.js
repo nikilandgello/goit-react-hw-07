@@ -84,6 +84,6 @@ export const selectFilteredContacts = createSelector(
       .filter(contact =>
         contact.firstname.toLowerCase().includes(filter.toLowerCase())
       )
-      .sort((a, b) => a.firstname.localeCompare(b.firstname));
+      .sort((a, b) => a.firstname.trim().localeCompare(b.firstname.trim()));
   }
 );

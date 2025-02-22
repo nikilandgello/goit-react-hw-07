@@ -12,7 +12,6 @@ export const fetchContacts = createAsyncThunk(
       return contacts.data;
     } catch (error) {
       toast.error('Oops... something went wrong');
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -22,12 +21,13 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, thunkAPI) => {
     try {
-      await axios.delete(`/contacts/${id}`);
-      toast.success(`Contact deleted successfully.`);
+      await toast.promise(axios.delete(`/contacts/${id}`), {
+        loading: 'Deleting contact...',
+        success: 'Contact deleted successfully!',
+        error: 'Oops... something went wrong',
+      });
       return id;
     } catch (error) {
-      toast.error('Oops... something went wrong');
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -37,12 +37,13 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (body, thunkAPI) => {
     try {
-      const contact = await axios.post('/contacts', body);
-      toast.success(`${contact.data.firstname} added successfully`);
+      const contact = await toast.promise(axios.post('/contacts', body), {
+        loading: 'Adding contact...',
+        success: `${body.firstname} added successfully!`,
+        error: 'Oops... something went wrong',
+      });
       return contact.data;
     } catch (error) {
-      toast.error('Oops... something went wrong');
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -52,13 +53,16 @@ export const editContact = createAsyncThunk(
   'contacts/editContact',
   async (body, thunkAPI) => {
     try {
-      const contact = await axios.put(`/contacts/${body.id}`, body);
-      toast.success(`${contact.data.firstname} updated successfully`);
-
+      const contact = await toast.promise(
+        axios.put(`/contacts/${body.id}`, body),
+        {
+          loading: 'Updating contact...',
+          success: `${body.firstname} updated successfully`,
+          error: 'Oops... something went wrong',
+        }
+      );
       return contact.data;
     } catch (error) {
-      toast.error('Oops... something went wrong');
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }
