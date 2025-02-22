@@ -4,8 +4,7 @@ import {
   deleteContact,
   editContact,
   fetchContacts,
-} from '../contactsOps';
-import toast from 'react-hot-toast';
+} from './contactsOps';
 import { selectNameFilter } from './filtersSlice';
 
 const initialState = {
@@ -26,7 +25,6 @@ const handleFulfilled = state => {
 const handleRejected = (state, action) => {
   state.loading = false;
   state.error = action.payload;
-  toast.error('Oops... something went wrong');
 };
 
 const slice = createSlice({
@@ -47,7 +45,6 @@ const slice = createSlice({
       .addCase(deleteContact.fulfilled, (state, action) => {
         handleFulfilled(state);
         state.items = state.items.filter(item => item.id !== action.payload);
-        toast.success(`Contact deleted successfully.`);
       })
       .addCase(deleteContact.rejected, handleRejected)
 
@@ -56,7 +53,6 @@ const slice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         handleFulfilled(state);
         state.items.push(action.payload);
-        toast.success(`${action.payload.firstname} added successfully`);
       })
       .addCase(addContact.rejected, handleRejected)
 
@@ -70,7 +66,6 @@ const slice = createSlice({
         if (itemIndex !== -1) {
           state.items[itemIndex] = action.payload;
         }
-        toast.success(`${action.payload.firstname} updated successfully`);
       })
       .addCase(editContact.rejected, handleRejected);
   },
@@ -85,8 +80,10 @@ export const selectError = state => state.contacts.error;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, filter) => {
-    return contacts.filter(contact =>
-      contact.firstname.toLowerCase().includes(filter.toLowerCase())
-    );
+    return contacts
+      .filter(contact =>
+        contact.firstname.toLowerCase().includes(filter.toLowerCase())
+      )
+      .sort((a, b) => a.firstname.localeCompare(b.firstname));
   }
 );

@@ -7,7 +7,7 @@ import {
   selectContacts,
   selectError,
   selectLoading,
-} from '../../redux/slice/contactsSlice';
+} from '../../redux/contactsSlice';
 
 const Main = () => {
   const contacts = useSelector(selectContacts);

@@ -3,7 +3,7 @@ import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
-import { selectFilteredContacts } from '../../redux/slice/contactsSlice';
+import { selectFilteredContacts } from '../../redux/contactsSlice';
 
 const ContactList = () => {
   const visibleContacts = useSelector(selectFilteredContacts);
