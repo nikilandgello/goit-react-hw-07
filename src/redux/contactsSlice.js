@@ -80,29 +80,10 @@ export const selectError = state => state.contacts.error;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, filter) => {
-    const groupContacts = contacts
+    return contacts
       .filter(contact =>
         contact.firstname.toLowerCase().includes(filter.toLowerCase())
       )
-      .sort((a, b) => a.firstname.trim().localeCompare(b.firstname.trim()))
-      .reduce((acc, contact) => {
-        const firstLater = contact.firstname[0].toUpperCase();
-
-        if (!acc[firstLater]) {
-          acc[firstLater] = [];
-        }
-
-        acc[firstLater].push(contact);
-
-        return acc;
-      }, {});
-
-    Object.keys(groupContacts).forEach(key => {
-      if (groupContacts[key].length === 0) {
-        delete groupContacts[key];
-      }
-    });
-
-    return groupContacts;
+      .sort((a, b) => a.firstname.trim().localeCompare(b.firstname.trim()));
   }
 );
